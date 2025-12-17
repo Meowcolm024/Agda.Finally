@@ -10,6 +10,7 @@ This is a test page :P
 module finally where
 
 import stlc
+import extra
 ```
 
 ## Markdown

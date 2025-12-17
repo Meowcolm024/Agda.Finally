@@ -1,0 +1,127 @@
+@book{plfa22.08,
+  author = {Philip Wadler and Wen Kokke and Jeremy G. Siek},
+  title  = {Programming Language Foundations in {A}gda},
+  year   = {2022},
+  month  = aug,
+  url    = {https://plfa.inf.ed.ac.uk/22.08/}
+}
+
+ @book{Pierce:SF2,
+  author    = {Benjamin C. Pierce and
+               Arthur Azevedo de Amorim and
+               Chris Casinghino and
+               Marco Gaboardi and
+               Michael Greenberg and
+               Cătălin Hriţcu and
+               Vilhelm Sjöberg and
+               Andrew Tolmach and
+               Brent Yorgey},
+  editor    = {Benjamin C. Pierce},
+  title     = {Programming Language Foundations},
+  series    = {Software Foundations},
+  volume    = {2},
+  year      = {2025},
+  publisher = {Electronic textbook},
+  note      = {Version 6.7,
+               \URL{http://softwarefoundations.cis.upenn.edu} }
+}
+
+@inproceedings{SchaeferEtAl:2015:Autosubst:-Reasoning,
+  title     = {Autosubst: Reasoning with de Bruijn Terms and Parallel Substitutions},
+  author    = {Steven Schäfer and Tobias Tebbi and Gert Smolka},
+  year      = {2015},
+  month     = {Aug},
+  editor    = {Xingyuan Zhang and Christian Urban},
+  publisher = {Springer-Verlag},
+  booktitle = {Interactive Theorem Proving - 6th International Conference, {ITP} 2015, Nanjing, China, August 24-27, 2015},
+  series    = {LNAI}
+}
+
+@inproceedings{10.1145/3293880.3294101,
+  author    = {Stark, Kathrin and Sch\"{a}fer, Steven and Kaiser, Jonas},
+  title     = {Autosubst 2: reasoning with multi-sorted de Bruijn terms and vector substitutions},
+  year      = {2019},
+  isbn      = {9781450362221},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3293880.3294101},
+  doi       = {10.1145/3293880.3294101},
+  abstract  = {Formalising metatheory in the Coq proof assistant is tedious as reasoning with binders without native support requires a lot of uninteresting technicalities. To relieve users from so-produced boilerplate, the Autosubst framework automates working with de Bruijn terms: For each annotated inductive type, Autosubst generates a corresponding instantiation operation for parallel substitutions and a decision procedure for assumption-free substitution lemmas. However, Autosubst is implemented in Ltac, Coq's tactic language, and thus suffers from Ltac's limitations. In particular, Autosubst is restricted to Coq and unscoped, non-mutual inductive types with a single sort of variables. In this paper, we present a new version of Autosubst that overcomes these restrictions. Autosubst 2 is an external code generator, which translates second-order HOAS specifications into potentially mutual inductive term sorts. We extend the equational theory of Autosubst to the case of mutual inductive sorts by combining the application of multiple parallel substitutions into exactly one instantiation operation for each sort, i.e. we parallelise substitutions to vector substitutions. The resulting equational theory is both simpler and more expressive than that of the original Autosubst framework and allows us to present an even more elegant proof of part A of the POPLMark challenge.},
+  booktitle = {Proceedings of the 8th ACM SIGPLAN International Conference on Certified Programs and Proofs},
+  pages     = {166–180},
+  numpages  = {15},
+  keywords  = {de Bruijn repersentation, multi-sorted terms, parallel substiutions, sigma-calculus},
+  location  = {Cascais, Portugal},
+  series    = {CPP 2019}
+}
+
+@misc{skorstengaard2019introductionlogicalrelations,
+  title         = {An Introduction to Logical Relations},
+  author        = {Lau Skorstengaard},
+  year          = {2019},
+  eprint        = {1907.11133},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.PL},
+  url           = {https://arxiv.org/abs/1907.11133}
+}
+
+@article{poplmark_reloaded,
+  title     = {POPLMark reloaded: Mechanizing proofs by logical
+               relations},
+  volume    = 29,
+  doi       = {10.1017/S0956796819000170},
+  journal   = {Journal of Functional Programming},
+  publisher = {Cambridge University Press},
+  author    = {Abel, Andreas and Allais, Guillaume and Hameer,
+               Aliya and Pientka, Brigitte and Momigliano, Alberto
+               and Schäfer, Steven and Stark, Kathrin},
+  year      = 2019,
+  pages     = {e19}
+}
+
+@inproceedings{10.1007/978-3-030-33636-3_10,
+  author    = {Chapman, James
+               and Kireev, Roman
+               and Nester, Chad
+               and Wadler, Philip},
+  editor    = {Hutton, Graham},
+  title     = {System F in Agda, for Fun and Profit},
+  booktitle = {Mathematics of Program Construction},
+  year      = {2019},
+  publisher = {Springer International Publishing},
+  address   = {Cham},
+  pages     = {255--297},
+  abstract  = {System F, also known as the polymorphic {\$}{\$}{\backslash}lambda {\$}{\$}-calculus, is a typed {\$}{\$}{\backslash}lambda {\$}{\$}-calculus independently discovered by the logician Jean-Yves Girard and the computer scientist John Reynolds. We consider {\$}{\$}F{\_}{\{}{\backslash}omega {\backslash}mu {\}}{\$}{\$}, which adds higher-order kinds and iso-recursive types. We present the first complete, intrinsically typed, executable, formalisation of System {\$}{\$}F{\_}{\{}{\backslash}omega {\backslash}mu {\}}{\$}{\$}that we are aware of. The work is motivated by verifying the core language of a smart contract system based on System {\$}{\$}F{\_}{\{}{\backslash}omega {\backslash}mu {\}}{\$}{\$}. The paper is a literate Agda script [14].},
+  isbn      = {978-3-030-33636-3}
+}
+
+@article{Abadi_Cardelli_Curien_Lévy_1991,
+  title   = {Explicit substitutions},
+  volume  = {1},
+  doi     = {10.1017/S0956796800000186},
+  number  = {4},
+  journal = {Journal of Functional Programming},
+  author  = {Abadi, M. and Cardelli, L. and Curien, P.-L. and Lévy, J.-J.},
+  year    = {1991},
+  pages   = {375–416}
+}
+
+@article{10.1145/1297658.1297664,
+  author     = {Biernacka, Ma\l{}gorzata and Danvy, Olivier},
+  title      = {A concrete framework for environment machines},
+  year       = {2007},
+  issue_date = {December 2007},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {9},
+  number     = {1},
+  issn       = {1529-3785},
+  url        = {https://doi.org/10.1145/1297658.1297664},
+  doi        = {10.1145/1297658.1297664},
+  abstract   = {We materialize the common understanding that calculi with explicit substitutions provide an intermediate step between an abstract specification of substitution in the lambda-calculus and its concrete implementations. To this end, we go back to Curien's original calculus of closures (an early calculus with explicit substitutions), we extend it minimally so that it can also express one-step reduction strategies, and we methodically derive a series of environment machines from the specification of two one-step reduction strategies for the lambda-calculus: normal order and applicative order. The derivation extends Danvy and Nielsen's refocusing-based construction of abstract machines with two new steps: one for coalescing two successive transitions into one, and the other for unfolding a closure into a term and an environment in the resulting abstract machine. The resulting environment machines include both the Krivine machine and the original version of Krivine's machine, Felleisen et al.'s CEK machine, and Leroy's Zinc abstract machine.},
+  journal    = {ACM Trans. Comput. Logic},
+  month      = dec,
+  pages      = {6–es},
+  numpages   = {30},
+  keywords   = {Abstract machines, closures, derivation, explicit substitutions}
+}

@@ -1,8 +1,15 @@
 {
+  "scripts": {
+    "agda": "cd src && agda --html --html-dir=../tmp --css=./static/Agda.css --html-highlight=auto finally.lagda.md",
+    "build": "npm run agda && node build.js",
+    "serve": "npx http-server docs",
+    "clean": "rm -r tmp docs"
+  },
   "dependencies": {
     "front-matter": "^4.0.2",
     "handlebars": "^4.7.8",
     "js-yaml": "^4.1.1",
-    "marked": "^17.0.1"
+    "marked": "^17.0.1",
+    "http-server": "^14.1.1"
   }
 }

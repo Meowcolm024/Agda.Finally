@@ -3,6 +3,19 @@ catalog:
     pages:
       - Basics
       - Properties
+      - Bigstep
+      - Natural Semantics
+      - Normalization
+      - Semantic Typing
+      - Strengthening
+      - Substitution
+      - Closure
+  - section: Extra
+    pages:
+      - Unscoped
+      - Explicit Substitutions
+      - Recursive Types
+      - System F
   - section: Misc
     pages:
       - Test

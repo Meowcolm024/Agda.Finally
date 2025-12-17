@@ -2,6 +2,8 @@
 title: Properties
 ---
 
+> TODO
+
 we also start with imports
 
 ```agda
