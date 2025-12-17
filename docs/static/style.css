@@ -1,0 +1,226 @@
+/* --- Extra Fonts --- */
+@font-face {
+    font-family: 'JuliaMono';
+    src: url('./JuliaMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 
+    * This is also mostly generated :) 
+*/
+
+/* --- 1. Variables & Reset --- */
+:root {
+    /* Light Theme Palette */
+    --bg-body: #ffffff;
+    --bg-sidebar: #f7f9fb;
+    /* Very subtle blue-grey */
+    --text-main: #333333;
+    --text-muted: #666666;
+    --accent-color: #2980b9;
+    /* A professional blue */
+    --accent-hover: #1abc9c;
+    --border-color: #e1e4e8;
+
+    /* Dimensions */
+    --sidebar-width: 250px;
+    --content-max-width: 800px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "JuliaMono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    background-color: var(--bg-body);
+    line-height: 1.6;
+}
+
+/* --- 2. Main Layout --- */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- 3. Sidebar Navigation --- */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    padding: 0rem 1.5rem;
+
+    /* Make sidebar sticky so it stays visible while scrolling content */
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    /* Scroll sidebar internally if list is too long */
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.sidebar .section {
+    margin-bottom: 2rem;
+}
+
+.sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding-left: 1em;
+    margin-bottom: 1rem;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: block;
+    padding: 0.1rem 0;
+    transition: color 0.2s ease;
+}
+
+.sidebar a:hover {
+    color: var(--accent-color);
+}
+
+/* Active state (applied by your build script) */
+.sidebar a.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    border-right: 3px solid var(--accent-color);
+    /* Visual marker */
+}
+
+/* --- 4. Main Content --- */
+.content {
+    flex: 1;
+    padding: 2rem 4rem;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll on small screens */
+}
+
+/* Constrain width for readability */
+.content>* {
+    max-width: var(--content-max-width);
+}
+
+/* Typography basics */
+h1,
+h2,
+h3,
+h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #111;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+/* Links in content */
+.content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    /* border-bottom: 1px dotted var(--accent-color); */
+}
+
+.content a:hover {
+    background-color: rgba(41, 128, 185, 0.1);
+}
+
+/* --- 5. Agda/Code Blocks --- */
+/* Agda usually outputs <pre class="Agda"> or similar */
+pre {
+    background-color: #f6f8fa;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+code {
+    font-family: var(--font-mono);
+    background-color: rgba(27, 31, 35, 0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 85%;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 100%;
+}
+
+/* blockquote with accent color */
+
+blockquote {
+    background-color: #f6f8fa;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    border-left-width: 12px;
+    border-color: var(--accent-color);
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    overflow-x: auto;
+}
+
+blockquote p {
+    padding-left: 1rem;
+    font-family: var(--font-sans);
+    font-style: italic;
+    margin: 6px;
+}
+
+/* --- 6. Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .content {
+        padding: 2rem 1.5rem;
+    }
+}

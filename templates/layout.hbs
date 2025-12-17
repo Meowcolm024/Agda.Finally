@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/static/Agda.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <a href="/">
+        <h2>Agda, Finally...</h2>
+      </a>
+      {{#each sidebar}}
+      <div class="section">
+        <h3>{{this.section}}</h3>
+        <ul>
+          {{#each this.pages}}
+          <li>
+            <a href="{{this.url}}" class="{{#if this.isActive}}active{{/if}}">
+              {{this.title}}
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/each}}
+    </nav>
+
+    <main class="content">
+      <h1>{{title}}</h1>
+      {{{ content }}}
+    </main>
+  </div>
+</body>
+
+</html>

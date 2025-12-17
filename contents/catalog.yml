@@ -1,0 +1,8 @@
+catalog:
+  - section: STLC
+    pages:
+      - Basics
+      - Properties
+  - section: Misc
+    pages:
+      - Test
