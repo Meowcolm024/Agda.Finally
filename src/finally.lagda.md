@@ -2,7 +2,7 @@
 title: Test
 ---
 
-This is a test page :P
+> This is a test page :P
 
 ## Agda
 
