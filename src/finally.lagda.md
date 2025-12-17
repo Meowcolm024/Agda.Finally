@@ -14,9 +14,15 @@ import stlc
 
 ## Markdown
 
+**This is bold text**
+
+*This is italic text*
+
+~~Strikethrough~~
+
 > Quotes look like this
 
-Code blocks:
+Code blocks (not highlighting yet):
 
 ```haskell
 main :: IO ()
@@ -28,3 +34,9 @@ We also have lists:
 - Agda
 - Lean 4
 - Rocq
+
+Numbered lists:
+
+1. Final Fantasy
+2. NieR
+
