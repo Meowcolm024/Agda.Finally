@@ -389,7 +389,8 @@ sub-assoc {n = n} {σ = σ} {τ} {θ} = extensionality λ x → lemma {x = x}
     lemma : ∀ {x : Fin n} → ((σ ⨟ τ) ⨟ θ) x ≡ (σ ⨟ τ ⨟ θ) x
     lemma {x} rewrite sub-sub {M = σ x} {σ₁ = τ} {σ₂ = θ} = refl
 
-subst-zero-exts-cons : ∀ {σ : Subst n m} {M : Term m} → exts σ ⨟ subst-zero M ≡ (M • σ)
+subst-zero-exts-cons : ∀ {σ : Subst n m} {M : Term m} 
+                     → exts σ ⨟ subst-zero M ≡ (M • σ)
 subst-zero-exts-cons {σ = σ} {M}
   rewrite cong-seq (exts-cons-shift {σ = σ}) (subst-Z-cons-ids {M = M})
   | sub-dist {M = ` zero} {σ = σ ⨟ ↑} {τ = M • ids}
@@ -437,8 +438,7 @@ rename-subst-commute : ∀ {N : Term (suc n)} {M : Term n} {ρ : Rename n m}
 rename-subst-commute {N = N} {M} {ρ} =
   begin
     (rename (ext ρ) N) [ rename ρ M ]
-  ≡⟨ cong-sub (cong-sub-zero (rename-subst-ren{M = M}))
-              (rename-subst-ren{M = N}) ⟩
+  ≡⟨ cong-sub (cong-sub-zero (rename-subst-ren{M = M})) (rename-subst-ren{M = N}) ⟩
     (⟪ ren (ext ρ) ⟫ N) [ ⟪ ren ρ ⟫ M ]
   ≡⟨ cong-sub refl (cong-sub{M = N} ren-ext refl) ⟩
     (⟪ exts (ren ρ) ⟫ N) [ ⟪ ren ρ ⟫ M ]
@@ -456,7 +456,7 @@ substitution : ∀ {M : Term (suc (suc n))} {N : Term (suc n)} {L : Term n}
 substitution {M = M} {N = N} {L = L} = sym (subst-commute {N = M} {M = N} {σ = subst-zero L})
 
 subst-zero-exts : ∀ {σ : Subst n m} {M : Term m} {x : Fin n}
-  → (subst (subst-zero M) ∘ exts σ) (suc x) ≡ σ x
+                → (subst (subst-zero M) ∘ exts σ) (suc x) ≡ σ x
 subst-zero-exts {σ = σ} {x = x} = cong-app (subst-zero-exts-cons {σ = σ}) (suc x)
 
 ext-subst-cons : ∀ {M : Term m} {σ : Subst n m}
@@ -475,7 +475,7 @@ sub-ext-sub {σ = σ} {M} {N}
   = refl
 
 rename-suc-commute : ∀ {ρ : Rename n m} {M}
-                  → rename suc (rename ρ M) ≡ rename (ext ρ) (rename suc M)
+                   → rename suc (rename ρ M) ≡ rename (ext ρ) (rename suc M)
 rename-suc-commute {ρ = ρ} {M = M} =
   begin
     rename suc (rename ρ M)

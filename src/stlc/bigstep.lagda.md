@@ -136,7 +136,7 @@ Big step implies multi step reduction to value (with the lemma `⇓-V`):
 ⇓≈—→* (⊢if ⊢L ⊢M ⊢N) (⇓-if₂ L⇓false N⇓V)       = —→*-trans (if-cong (⇓≈—→* ⊢L L⇓false)) (_ —→⟨ β-if₂ ⟩ ⇓≈—→* ⊢N N⇓V)
 ```
 
-Before showing multi step to value implies big step, we shall prove the following lemma first:
+Before showing multi step to value implies big step, we prove the following lemma first:
 
 ```agda
 —→≈⇓ : ∀ {A M M' V}
