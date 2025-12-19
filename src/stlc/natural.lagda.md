@@ -184,7 +184,7 @@ Natural semantic implies multi step reduction to value:
 ⇓→—→*×≈ {σ = σ} ⇓-true γ≈ₑσ = true , (subst σ true ∎) , tt
 ⇓→—→*×≈ {σ = σ} ⇓-false γ≈ₑσ = false , (subst σ false ∎) , tt
 ⇓→—→*×≈ (⇓-if₁ M⇓true M⇓V) γ≈ₑσ 
-    with (true , L—→*true , tt) ←  ⇓→—→*×≈ M⇓true γ≈ₑσ 
+    with (true , L—→*true , tt) ← ⇓→—→*×≈ M⇓true γ≈ₑσ 
     |    (M' , M—→*M' , V≈M') ← ⇓→—→*×≈ M⇓V γ≈ₑσ
     = M' , —→*-trans (if-cong L—→*true) (_ —→⟨ β-if₁ ⟩ M—→*M') , V≈M'
 ⇓→—→*×≈ (⇓-if₂ M⇓false N⇓V) γ≈ₑσ  

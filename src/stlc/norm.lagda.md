@@ -12,7 +12,7 @@ title: Normalization
 module stlc.norm where
 ```
 
-Here we consider the (weak) normalization for stlc. Please refer to the notes above for motivation and explanation :P.
+Here we consider the (weak) normalization of stlc. Please refer to the notes above for motivation and explanation :P.
 
 ## Imports
 
@@ -126,8 +126,8 @@ Normalizing term halts. This is encoded in the logical relation predicate.
 
 ```agda
 𝒩-halts : ∀ {M A} → 𝒩 A ⟦ M ⟧ → Halts M
-𝒩-halts {A = Bool}  (⊢M , HM)        = HM
-𝒩-halts {A = A ⇒ B} (⊢M , nn' , HMN) = nn'
+𝒩-halts {A = Bool}  (⊢M , HM)     = HM
+𝒩-halts {A = A ⇒ B} (⊢M , HM , k) = HM
 ```
 
 ## Fundamental Property

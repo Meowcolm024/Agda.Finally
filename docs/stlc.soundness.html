@@ -59,7 +59,7 @@
           </li>
           <li>
             <a href="stlc.clos.html" class="">
-              Closure
+              Closure Calculus
             </a>
           </li>
         </ul>
@@ -107,10 +107,50 @@
     <main class="content">
       <h1>Semantic Typing</h1>
       <blockquote>
+<p>This part mainly follows the note <a href="https://cs.au.dk/~birke/papers/AnIntroductionToLogicalRelations.pdf">An Introduction to Logical Relations</a></p>
+<p>You may also want to checkout the lecture note <a href="https://www.cs.uoregon.edu/research/summerschool/summer23/_lectures/Logical_Relations_Notes.pdf">OPLSS 2023: Logical Relations</a></p>
+<p>Or the <a href="https://github.com/tmoux/logical-relations">Rocq formalization</a></p>
+</blockquote>
+<pre class="Agda"><a id="444" class="Keyword">module</a> <a id="451" href="stlc.soundness.html" class="Module">stlc.soundness</a> <a id="466" class="Keyword">where</a>
+</pre>
+<p>Here we consider the <em>semantic type soundness (safety)</em> of stlc. Please refer to the notes above for motivation and explanation :P.</p>
+<h2>Imports</h2>
+<pre class="Agda"><a id="630" class="Keyword">open</a> <a id="635" class="Keyword">import</a> <a id="642" href="stlc.base.html" class="Module">stlc.base</a>
+<a id="652" class="Keyword">open</a> <a id="657" class="Keyword">import</a> <a id="664" href="stlc.prop.html" class="Module">stlc.prop</a>
+<a id="674" class="Keyword">open</a> <a id="679" class="Keyword">import</a> <a id="686" href="stlc.subst.html" class="Module">stlc.subst</a>
+<a id="697" class="Keyword">open</a> <a id="702" href="stlc.base.html#5542" class="Module">multistep</a>
+
+<a id="713" class="Keyword">import</a> <a id="720" href="Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="758" class="Symbol">as</a> <a id="761" class="Module">Eq</a>
+<a id="764" class="Keyword">open</a> <a id="769" href="Relation.Binary.PropositionalEquality.html" class="Module">Eq</a> <a id="772" class="Keyword">using</a> <a id="778" class="Symbol">(</a><a id="779" href="Agda.Builtin.Equality.html#150" class="Datatype Operator">_≡_</a><a id="782" class="Symbol">;</a> <a id="784" href="Agda.Builtin.Equality.html#207" class="InductiveConstructor">refl</a><a id="788" class="Symbol">)</a>
+<a id="790" class="Keyword">open</a> <a id="795" class="Keyword">import</a> <a id="802" href="Data.Nat.html" class="Module">Data.Nat</a> <a id="811" class="Keyword">using</a> <a id="817" class="Symbol">(</a><a id="818" href="Agda.Builtin.Nat.html#203" class="Datatype">ℕ</a><a id="819" class="Symbol">;</a> <a id="821" href="Agda.Builtin.Nat.html#221" class="InductiveConstructor">zero</a><a id="825" class="Symbol">;</a> <a id="827" href="Agda.Builtin.Nat.html#234" class="InductiveConstructor">suc</a><a id="830" class="Symbol">)</a>
+<a id="832" class="Keyword">open</a> <a id="837" class="Keyword">import</a> <a id="844" href="Data.Fin.html" class="Module">Data.Fin</a> <a id="853" class="Keyword">using</a> <a id="859" class="Symbol">(</a><a id="860" href="Data.Fin.Base.html#1132" class="Datatype">Fin</a><a id="863" class="Symbol">;</a> <a id="865" href="Data.Fin.Base.html#1154" class="InductiveConstructor">zero</a><a id="869" class="Symbol">;</a> <a id="871" href="Data.Fin.Base.html#1175" class="InductiveConstructor">suc</a><a id="874" class="Symbol">)</a>
+<a id="876" class="Keyword">open</a> <a id="881" class="Keyword">import</a> <a id="888" href="Data.Product.html" class="Module">Data.Product</a> <a id="901" class="Keyword">using</a> <a id="907" class="Symbol">(</a><a id="908" href="Data.Product.Base.html#1618" class="Function Operator">_×_</a><a id="911" class="Symbol">;</a> <a id="913" href="Agda.Builtin.Sigma.html#235" class="InductiveConstructor Operator">_,_</a><a id="916" class="Symbol">;</a> <a id="918" href="Data.Product.Base.html#1371" class="Function">∃-syntax</a><a id="926" class="Symbol">;</a> <a id="928" href="Data.Product.Base.html#1244" class="Function">Σ-syntax</a><a id="936" class="Symbol">)</a>
+<a id="938" class="Keyword">open</a> <a id="943" class="Keyword">import</a> <a id="950" href="Data.Sum.html" class="Module">Data.Sum</a> <a id="959" class="Keyword">using</a> <a id="965" class="Symbol">(</a><a id="966" href="Data.Sum.Base.html#625" class="Datatype Operator">_⊎_</a><a id="969" class="Symbol">;</a> <a id="971" href="Data.Sum.Base.html#675" class="InductiveConstructor">inj₁</a><a id="975" class="Symbol">;</a> <a id="977" href="Data.Sum.Base.html#700" class="InductiveConstructor">inj₂</a><a id="981" class="Symbol">)</a>
+<a id="983" class="Keyword">open</a> <a id="988" class="Keyword">import</a> <a id="995" href="Relation.Nullary.html" class="Module">Relation.Nullary</a> <a id="1012" class="Keyword">using</a> <a id="1018" class="Symbol">(</a><a id="1019" href="Relation.Nullary.Negation.Core.html#677" class="Function Operator">¬_</a><a id="1021" class="Symbol">;</a> <a id="1023" href="Relation.Nullary.Negation.Core.html#1289" class="Function">contradiction</a><a id="1036" class="Symbol">;</a> <a id="1038" href="Relation.Nullary.Decidable.Core.html#1966" class="Record">Dec</a><a id="1041" class="Symbol">;</a> <a id="1043" href="Relation.Nullary.Decidable.Core.html#2099" class="InductiveConstructor">yes</a><a id="1046" class="Symbol">;</a> <a id="1048" href="Relation.Nullary.Decidable.Core.html#2136" class="InductiveConstructor">no</a><a id="1050" class="Symbol">)</a>
+<a id="1052" class="Keyword">open</a> <a id="1057" class="Keyword">import</a> <a id="1064" href="Data.Empty.html" class="Module">Data.Empty</a> <a id="1075" class="Keyword">using</a> <a id="1081" class="Symbol">(</a><a id="1082" href="Data.Empty.html#914" class="Function">⊥</a><a id="1083" class="Symbol">;</a> <a id="1085" href="Data.Empty.html#1069" class="Function">⊥-elim</a><a id="1091" class="Symbol">)</a>
+<a id="1093" class="Keyword">open</a> <a id="1098" class="Keyword">import</a> <a id="1105" href="Data.Unit.html" class="Module">Data.Unit</a> <a id="1115" class="Keyword">using</a> <a id="1121" class="Symbol">(</a><a id="1122" href="Agda.Builtin.Unit.html#175" class="Record">⊤</a><a id="1123" class="Symbol">;</a> <a id="1125" href="Agda.Builtin.Unit.html#212" class="InductiveConstructor">tt</a><a id="1127" class="Symbol">)</a>
+</pre>
+<h2>Definitions</h2>
+<blockquote>
 <p>TODO</p>
 </blockquote>
-<pre class="Agda"><a id="49" class="Keyword">module</a> <a id="56" href="stlc.soundness.html" class="Module">stlc.soundness</a> <a id="71" class="Keyword">where</a>
-</pre>
+<h2>Auxiliary Lemmas</h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2>Adequacy</h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2>Fundamental Property</h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2>Semantic Type Soundness</h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+
     </main>
   </div>
 </body>

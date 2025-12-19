@@ -1,5 +1,5 @@
 ---
-title: Closure
+title: Closure Calculus
 ---
 
 > TODO

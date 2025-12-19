@@ -216,7 +216,7 @@ confluence : ∀ {n} {L M M' : Term n}
     ------------------------------
   → ∃[ N ] (M —→* N) × (M' —→* N)
 confluence (_ ∎)                L—→*M'                = _ , L—→*M' , (_ ∎)
-confluence (_ —→⟨ L→L₁ ⟩ L₁→*M) (_ ∎)                 = _ , (_ ∎) , step—→ _ L₁→*M L→L₁
+confluence (_ —→⟨ L→L₁ ⟩ L₁→*M) (_ ∎)                 = _ , (_ ∎) , (_ —→⟨ L→L₁ ⟩ L₁→*M)
 confluence (_ —→⟨ L→L₁ ⟩ L₁→*M) (_ —→⟨ L→L₂ ⟩ L₂→*M') rewrite —→-determ L→L₁ L→L₂ = confluence L₁→*M L₂→*M'
 ```
 
@@ -228,7 +228,7 @@ appL-cong : ∀ {n} {M M' N : Term n}
     -----------------
   → M · N —→* M' · N
 appL-cong (_ ∎)                   = _ ∎
-appL-cong (_ —→⟨ M—→M₁ ⟩ M₁—→*M') = step—→ _(appL-cong M₁—→*M') (ξ-app₁ M—→M₁)
+appL-cong (_ —→⟨ M—→M₁ ⟩ M₁—→*M') = step—→ _ (appL-cong M₁—→*M') (ξ-app₁ M—→M₁)
 
 appR-cong : ∀ {n M} {N N' : Term n}
   → N —→* N'
@@ -241,6 +241,6 @@ if-cong : ∀ {n} {L L' M N : Term n}
   → L —→* L'
     -----------------------
   → if L M N —→* if L' M N
-if-cong (_ ∎)                   = _  ∎
+if-cong (_ ∎)                   = _ ∎
 if-cong (_ —→⟨ L—→L₁ ⟩ L₁—→*L') = step—→ _ (if-cong L₁—→*L') (ξ-if L—→L₁)
 ```

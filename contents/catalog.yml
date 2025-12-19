@@ -9,7 +9,7 @@ catalog:
       - Semantic Typing
       - Strengthening
       - Substitution
-      - Closure
+      - Closure Calculus
   - section: Extra
     pages:
       - Unscoped

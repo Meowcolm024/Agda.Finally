@@ -18,7 +18,7 @@ open import Relation.Nullary.Decidable using (True; toWitness)
 
 ## Syntax
 
-Here we consider a simply typed lambda calculus we *Booleans*.
+Here we consider a simply typed lambda calculus with *Booleans*.
 It is a bit more interesting than the one with only a base type, and yet
 simplier than others with types like `Nat`.
 
@@ -60,7 +60,7 @@ The case for variable and lambda abstraction is slightly more interesting.
 
 ```agda
 infix  9 #_
--- a shorthand to write `# 2` instead of `# suc (suc zero)`
+-- a shorthand to write (# 2) instead of (` suc (suc zero))
 #_ : ∀ {n} (m : ℕ) → {m<n : True (suc m ≤? n)} → Term n
 #_ m {m<n} = ` fromℕ< (toWitness m<n)
 ```
