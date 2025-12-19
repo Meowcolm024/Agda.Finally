@@ -4,7 +4,9 @@ title: Agda, Finally...
 
 > WIP
 
-I'm not sure what to write here
+I'm not sure what to write here...
+
+> While I cannot ensure all the accompanied texts or explanations are correct, at least all the Agda code type checks :D
 
 ## References
 

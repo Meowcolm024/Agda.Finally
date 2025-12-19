@@ -97,7 +97,7 @@ Big step reduces to value:
 ⇓-V (⊢if ⊢L ⊢M ⊢N) (⇓-if₂ L⇓false N⇓V)         = ⇓-V ⊢N N⇓V
 ```
 
-Big step is deterministic:
+Big step reduction is deterministic:
 
 ```agda
 ⇓-determ : ∀ {M V V' : Term 0}
@@ -118,15 +118,16 @@ Big step is deterministic:
 
 ## Relating Small Step and Big Step
 
-Big step implies multi step reduction to value (with the lemma `⇓-V`):
+Big step implies multi step reduction to value (with the lemma `⇓-V`). 
+It proceeds by a straightforward induction on the big step judgement.
 
 ```agda
 ⇓≈—→* : ∀ {A M V} 
     → ∅ ⊢ M ⦂ A → M ⇓ V 
       ------------------
     → M —→* V
-⇓≈—→* (⊢abs ⊢M)    ⇓-abs                       = _ ∎
-⇓≈—→* (⊢app ⊢M ⊢N) (⇓-app M⇓ƛM' N⇓N' M'[N']⇓V) with (⊢abs ⊢M') ← ⇓-pres ⊢M M⇓ƛM'
+⇓≈—→* (⊢abs ⊢M)      ⇓-abs                     = _ ∎
+⇓≈—→* (⊢app ⊢M ⊢N)   (⇓-app M⇓ƛM' N⇓N' M'[N']⇓V) with (⊢abs ⊢M') ← ⇓-pres ⊢M M⇓ƛM'
     = —→*-trans (appL-cong (⇓≈—→* ⊢M M⇓ƛM')) 
         (—→*-trans (appR-cong (⇓≈—→* ⊢N N⇓N'))
         (_ —→⟨ β-abs (⇓-V ⊢N N⇓N') ⟩ ⇓≈—→* (ty-subst ⊢M' λ { Z → ⇓-pres ⊢N N⇓N' }) M'[N']⇓V))
