@@ -191,6 +191,8 @@ Then we can proceed with either branch.
 
 ## Normalization
 
+Well typed term halts.
+
 ```agda
 norm : ∀ {M A} → ∅ ⊢ M ⦂ A → Halts M
 norm {M = M} ⊢M with 𝒩-halts (⊢𝒩 {σ = ids} ⊢M (λ ()))

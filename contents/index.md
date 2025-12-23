@@ -6,7 +6,7 @@ title: Agda, Finally...
 
 I'm not sure what to write here...
 
-> While I cannot ensure all the accompanied texts or explanations are correct, at least all the Agda code type checks :D
+> While I cannot ensure all the accompanied texts or explanation are correct, at least all the Agda code type checks :D
 
 ## References
 

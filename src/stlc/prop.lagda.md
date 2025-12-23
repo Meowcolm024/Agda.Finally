@@ -197,7 +197,7 @@ Multi-step is transitive.
     ------------------
   → L —→* N
 —→*-trans (L ∎)                  M—→*N = M—→*N
-—→*-trans (L —→⟨ L—→L' ⟩ L'—→*M) M—→*N = step—→ L (—→*-trans L'—→*M M—→*N) L—→L'
+—→*-trans (L —→⟨ L—→L' ⟩ L'—→*M) M—→*N = L —→⟨ L—→L' ⟩ —→*-trans L'—→*M M—→*N
 ```
 
 Multi-step preserves typing.
@@ -228,19 +228,19 @@ appL-cong : ∀ {n} {M M' N : Term n}
     -----------------
   → M · N —→* M' · N
 appL-cong (_ ∎)                   = _ ∎
-appL-cong (_ —→⟨ M—→M₁ ⟩ M₁—→*M') = step—→ _ (appL-cong M₁—→*M') (ξ-app₁ M—→M₁)
+appL-cong (_ —→⟨ M—→M₁ ⟩ M₁—→*M') = _ —→⟨ ξ-app₁ M—→M₁ ⟩ appL-cong M₁—→*M'
 
 appR-cong : ∀ {n M} {N N' : Term n}
   → N —→* N'
     -------------------------
   → (ƛ M) · N —→* (ƛ M) · N'
 appR-cong (_ ∎)                   = _ ∎
-appR-cong (_ —→⟨ N—→N₁ ⟩ N₁—→*N') = step—→ _ (appR-cong N₁—→*N') (ξ-app₂ N—→N₁)
+appR-cong (_ —→⟨ N—→N₁ ⟩ N₁—→*N') = _ —→⟨ ξ-app₂ N—→N₁ ⟩ appR-cong N₁—→*N'
 
 if-cong : ∀ {n} {L L' M N : Term n}
   → L —→* L'
     -----------------------
   → if L M N —→* if L' M N
 if-cong (_ ∎)                   = _ ∎
-if-cong (_ —→⟨ L—→L₁ ⟩ L₁—→*L') = step—→ _ (if-cong L₁—→*L') (ξ-if L—→L₁)
+if-cong (_ —→⟨ L—→L₁ ⟩ L₁—→*L') = _ —→⟨ ξ-if L—→L₁ ⟩ (if-cong L₁—→*L')
 ```

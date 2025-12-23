@@ -69,39 +69,35 @@ _,'_ : ∀ {n} → ClosEnv n → Clos → ClosEnv (suc n)
 ```agda
 infix  2 _⊢_⇓_
 
-data _⊢_⇓_ : ∀ {n} → ClosEnv n → Term n → Clos → Set where
+data _⊢_⇓_ {n} (γ : ClosEnv n) : Term n → Clos → Set where
 
-  ⇓-var : ∀ {n} {γ : ClosEnv n} {x V}
+  ⇓-var : ∀ {x V}
     → γ x ≡ V
       ------------
     → γ ⊢ ` x ⇓ V
 
-  ⇓-lam : ∀ {n} {γ : ClosEnv n} {M}
+  ⇓-lam : ∀ {M}
       -----------------------
     → γ ⊢ ƛ M ⇓ clos (ƛ M) γ
 
-  ⇓-app : ∀ {n m} {γ : ClosEnv n} {δ : ClosEnv m} {L M N U V}
+  ⇓-app : ∀ {m} {δ : ClosEnv m} {L M N U V}
     → γ ⊢ L ⇓ clos (ƛ N) δ
     → γ ⊢ M ⇓ U
     → (δ ,' U) ⊢ N ⇓ V
       ---------------------
     → γ ⊢ L · M ⇓ V
 
-  ⇓-true : ∀ {n} {γ : ClosEnv n}
-      ----------------
-    → γ ⊢ true ⇓ true
+  ⇓-true : γ ⊢ true ⇓ true
 
-  ⇓-false : ∀ {n} {γ : ClosEnv n}
-      ------------------
-    → γ ⊢ false ⇓ false
+  ⇓-false : γ ⊢ false ⇓ false
 
-  ⇓-if₁ : ∀ {n} {γ : ClosEnv n} {L M N V}
+  ⇓-if₁ : ∀ {L M N V}
     → γ ⊢ L ⇓ true
     → γ ⊢ M ⇓ V
       -----------------
     → γ ⊢ if L M N ⇓ V
 
-  ⇓-if₂ : ∀ {n} {γ : ClosEnv n} {L M N V}
+  ⇓-if₂ : ∀ {L M N V}
     → γ ⊢ L ⇓ false
     → γ ⊢ N ⇓ V
       -----------------
