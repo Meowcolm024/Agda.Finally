@@ -236,7 +236,7 @@ Syntactic typing implies semantic typing:
 ⊢-⊨ (⊢var x) σ GG M' (M→*M' , —↛M') with refl ← —↛-M→*M M→*M' (𝒱→—↛ (GG x)) = GG x
 ```
 
-- Case `abs`
+- Case for lambda abstraction
 
 ```agda
 ⊢-⊨ {M = ƛ M} (⊢abs ⊢M) σ GG M' ((ƛ ⟪σ⟫M ∎) , —↛M') N VN M'' (MN→M' , —↛M'')
@@ -246,7 +246,7 @@ Syntactic typing implies semantic typing:
     ⟪N•σ⟫M→*M'' rewrite Eq.sym (sub-ext-sub {σ = σ} {M = M} {N = N}) = MN→M'
 ```
 
-- Case `app`
+- Case function application
 
 ```agda
 ⊢-⊨ {M = M · N} (⊢app ⊢M ⊢N) σ GG M' (M→*M' , —↛M')
