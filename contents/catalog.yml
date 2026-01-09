@@ -13,6 +13,7 @@ catalog:
   - section: Extra
     pages:
       - Unscoped
+      - NbE
       - Explicit Substitutions
       - Recursive Types
       - System F
