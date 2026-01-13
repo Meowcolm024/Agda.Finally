@@ -166,7 +166,7 @@ ren : (ℕ → ℕ) → (ℕ → Term)
 ren ρ = ids ∘ ρ
 
 ren-ext : ∀ {ρ} → ren (ext ρ) ≡ exts (ren ρ)
-ren-ext {ρ} = extensionality λ { zero → refl ; (suc x) → refl }
+ren-ext = extensionality λ { zero → refl ; (suc x) → refl }
 
 rename-subst-ren : ∀ {ρ M} → rename ρ M ≡ subst (ren ρ) M
 rename-subst-ren {ρ} {` x}   = refl

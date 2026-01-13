@@ -52,7 +52,7 @@ infix  6 —↛_
 ```
 
 The definition of *semantic value* and *semantic expression*:
-- The semantic value of type `Bool` is `either` true or `false`.
+- The semantic value of type `Bool` is either `true` or `false`.
 - The semantic value of function type is a lambda, which is a semantic expression when applying a semantic value of another term `N`.
 - A semantic expression is a term that can be reduced to a semantic value.
 
